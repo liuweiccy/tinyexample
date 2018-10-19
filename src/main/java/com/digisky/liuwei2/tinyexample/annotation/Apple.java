@@ -14,14 +14,6 @@ public class Apple {
     @FruitColor(FruitColor.Color.GREEN)
     private String color;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getColor() {
         return color;
     }
