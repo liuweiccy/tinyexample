@@ -1,0 +1,40 @@
+1 : 2018-2-26 14:39:55 147  modulefile=C:\Users\1\AppData\Local\liebao\6.0.114.14266\uninst.exe,installPath=C:\Users\1\AppData\Local\liebao\
+2 : 2018-2-26 14:39:55 591  RunApp szPath=C:\Users\1\AppData\Local\Temp\uninst.exe,szCmd=QQPCSoftMgr.exe,dwWaitTime=0,bShow=1,bWaitTimeTermination=0
+3 : 
+4 : 2018-2-26 14:39:55 942  RunApp bRet=1
+5 : 
+6 : 2018-2-26 14:39:55 971  modulefile=C:\Users\1\AppData\Local\Temp\uninst.exe,installPath=C:\Users\1\AppData\Local\liebao\
+7 : 2018-2-26 14:40:08 752  modulefile=C:\Users\1\AppData\Local\liebao\6.0.114.14266\uninst.exe,installPath=C:\Users\1\AppData\Local\liebao\
+8 : 2018-2-26 14:40:09 147  RunApp szPath=C:\Users\1\AppData\Local\Temp\uninst.exe,szCmd=QQPCSoftMgr.exe,dwWaitTime=0,bShow=1,bWaitTimeTermination=0
+9 : 
+10 : 2018-2-26 14:40:09 341  RunApp bRet=1
+11 : 
+12 : 2018-2-26 14:40:09 371  modulefile=C:\Users\1\AppData\Local\Temp\uninst.exe,installPath=C:\Users\1\AppData\Local\liebao\
+13 : 2018-2-26 14:40:15 328  RealDownloadUninstallConfigFunc start
+14 : 2018-2-26 14:40:15 536  DeleteShortcut begin!!
+15 : 2018-2-26 14:40:15 550  URLDownloadToFile start 0x0
+16 : 2018-2-26 14:40:15 550  RealDownloadUninstallConfigFunc end
+17 : 2018-2-26 14:40:15 616  CreateShellLink start...
+18 : 2018-2-26 14:40:15 620  Save = 0x80070002
+19 : 2018-2-26 14:40:15 796  ShellExecute ret=0x1f
+20 : 
+21 : 2018-2-26 14:40:15 812  DeleteShortcut end!!
+22 : 2018-2-26 14:40:15 844  DeleteProductFile begin!!
+23 : 2018-2-26 14:40:15 844  File C Not Exits
+24 : 2018-2-26 14:40:15 844  DeleteProductFile end!!
+25 : 2018-2-26 14:40:15 844  StopSvr begin!!
+26 : 2018-2-26 14:40:15 844  StopSvr = C:\Users\1\AppData\Local\liebao\6.0.114.14266 
+27 : 
+28 : 2018-2-26 14:40:15 844  GetDebugPrivilege bRet=1,code=0
+29 : 
+30 : 2018-2-26 14:40:15 845  KillProcessByPath Begin
+31 : 
+32 : 2018-2-26 14:40:15 845  KillProcessByPath path:\Device\HarddiskVolume1\Users\1\AppData\Local\liebao\6.0.114.14266\knbcenter.exe
+33 : 2018-2-26 14:40:15 877  KillProcessByPath End
+34 : 
+35 : 2018-2-26 14:40:15 877  service DeleteSubKeyTree fail, err=2
+36 : 
+37 : 2018-2-26 14:40:15 877  StopSvr dwcode=0
+38 : 2018-2-26 14:40:15 877  StopSvr end!!
+39 : 2018-2-26 14:40:17 971  ClearBDHDFolder begin!!
+40 : 2018-2-26 14:40:17 971  ClearBDHDFolder end!!
