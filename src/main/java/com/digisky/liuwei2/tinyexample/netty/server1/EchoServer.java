@@ -40,8 +40,8 @@ public class EchoServer {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast("简单业务逻辑处理器", new EchoServerHandler());
                             ch.pipeline().addLast("简单业务逻辑处理器2", new EchoClientHandler());
-                        }
-                    });
+                            ch.pipeline().names();
+                    }});
 
             ChannelFuture f = b.bind().sync();
             print("Server Starting......");

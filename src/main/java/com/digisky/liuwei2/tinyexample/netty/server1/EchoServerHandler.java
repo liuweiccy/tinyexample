@@ -8,6 +8,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 
+import java.net.InetSocketAddress;
+
 import static com.digisky.liuwei2.tinyexample.util.Util.print;
 
 /**
@@ -20,6 +22,11 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         ByteBuf in = (ByteBuf) msg;
         print("Server received: " + in.toString(CharsetUtil.UTF_8));
         ctx.write(in);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        ctx.writeAndFlush("sss");
     }
 
     @Override
