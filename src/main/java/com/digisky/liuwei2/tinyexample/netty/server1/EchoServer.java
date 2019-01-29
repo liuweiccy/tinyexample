@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.logging.LoggingHandler;
 
 import java.net.InetSocketAddress;
 
@@ -38,6 +39,7 @@ public class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast("logging", new LoggingHandler());
                             ch.pipeline().addLast("简单业务逻辑处理器", new EchoServerHandler());
                             ch.pipeline().addLast("简单业务逻辑处理器2", new EchoClientHandler());
                             ch.pipeline().names();

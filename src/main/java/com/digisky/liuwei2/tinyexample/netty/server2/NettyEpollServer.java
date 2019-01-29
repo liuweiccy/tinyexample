@@ -12,6 +12,9 @@ import io.netty.channel.local.LocalServerChannel;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.SslHandler;
 import io.netty.util.CharsetUtil;
 
 import java.net.InetSocketAddress;
@@ -37,6 +40,7 @@ public class NettyEpollServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addFirst("ssl", new SslHandler(SslContext.newClientContext().newEngine(ch.alloc())));
                             ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
                                 @Override
                                 public void channelActive(ChannelHandlerContext ctx) throws Exception {
