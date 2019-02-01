@@ -9,6 +9,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.WriteTimeoutHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 
@@ -18,6 +23,7 @@ import static com.digisky.liuwei2.tinyexample.util.Util.print;
  * @author liuwei2
  */
 public class EchoServer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EchoServer.class);
     private final int port;
 
     public EchoServer(int port) {
@@ -25,6 +31,7 @@ public class EchoServer {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        LOGGER.debug("可用的处理器数量: {}", Runtime.getRuntime().availableProcessors());
         new EchoServer(6985).start();
     }
 
@@ -42,6 +49,9 @@ public class EchoServer {
                             ch.pipeline().addLast("logging", new LoggingHandler());
                             ch.pipeline().addLast("简单业务逻辑处理器", new EchoServerHandler());
                             ch.pipeline().addLast("简单业务逻辑处理器2", new EchoClientHandler());
+                            ch.pipeline().addLast("timeout", new ReadTimeoutHandler(10));
+//                            ch.pipeline().addLast("timeout", new WriteTimeoutHandler(10));
+//                            ch.pipeline().addLast("timeout", new IdleStateHandler(10, 10, 10));
                             ch.pipeline().names();
                     }});
 
