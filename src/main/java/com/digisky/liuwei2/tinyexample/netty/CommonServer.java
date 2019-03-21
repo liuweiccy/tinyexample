@@ -5,8 +5,6 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -17,13 +15,14 @@ public class CommonServer {
     public void start(int port) throws Exception {
         ServerBootstrap b = new ServerBootstrap();
 
-        EventLoopGroup boss = new NioEventLoopGroup(1);
-        EventLoopGroup worker = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors() * 2);
+        EventLoopGroup boss = NettyUtil.getEventLoopGroup(1);
+        EventLoopGroup worker = NettyUtil.getEventLoopGroup(Runtime.getRuntime().availableProcessors() * 2);
 
         try {
             b.group(boss, worker);
-            b.channel(NioServerSocketChannel.class);
+            b.channel(NettyUtil.getChannelClass());
             b.localAddress(port);
+
             b.childHandler(new ServerMarshallingInitializer());
 
             ChannelFuture f = b.bind().sync();
@@ -33,8 +32,6 @@ public class CommonServer {
             worker.shutdownGracefully();
             boss.shutdownGracefully();
         }
-
-
     }
 
     public static void main(String[] args) throws Exception {

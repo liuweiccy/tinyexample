@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 
 /**
  * 测试CopyOnWrite(写时复制)的并发安全性
+ * 保证并发安全,适用于读多写少的场景
  *
  * @author liuwei2
  */
