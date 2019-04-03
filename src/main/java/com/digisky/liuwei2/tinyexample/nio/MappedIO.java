@@ -8,7 +8,7 @@ import java.nio.channels.FileChannel;
  * @author liuwei2
  */
 public class MappedIO {
-    private static int numOfInts = 40000000;
+    private static long numOfInts = 4000000000L;
     private static int numOfUbuffInts = 200000;
 
     private abstract static class Tester {
