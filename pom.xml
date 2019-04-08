@@ -8,6 +8,13 @@
     <artifactId>tinyexample</artifactId>
     <version>0.01</version>
 
+    <properties>
+        <zookeeper>3.4.13</zookeeper>
+        <curator>4.2.0</curator>
+        <spring>5.1.5.RELEASE</spring>
+        <jboss-marshalling>2.0.6.Final</jboss-marshalling>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -60,12 +67,12 @@
         <dependency>
             <groupId>org.jboss.marshalling</groupId>
             <artifactId>jboss-marshalling</artifactId>
-            <version>2.0.6.Final</version>
+            <version>${jboss-marshalling}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.marshalling</groupId>
             <artifactId>jboss-marshalling-serial</artifactId>
-            <version>2.0.6.Final</version>
+            <version>${jboss-marshalling}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -81,20 +88,32 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>${spring}</version>
             <scope>test</scope>
         </dependency>
         <!-- zookeeper -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.13</version>
+            <version>${zookeeper}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>${curator}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>${curator}</version>
+        </dependency>
+
+
 
     </dependencies>
 </project>
