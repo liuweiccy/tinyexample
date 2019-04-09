@@ -1,6 +1,9 @@
 package com.digisky.liuwei2.tinyexample.serialize;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 
 /**
  * @author liuwei2

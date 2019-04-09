@@ -1,7 +1,6 @@
 package com.digisky.liuwei2.tinyexample.io;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 
 /**

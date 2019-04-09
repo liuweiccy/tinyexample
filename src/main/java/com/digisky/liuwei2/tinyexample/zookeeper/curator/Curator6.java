@@ -1,12 +1,11 @@
 package com.digisky.liuwei2.tinyexample.zookeeper.curator;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 更新数据API

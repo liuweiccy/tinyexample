@@ -2,7 +2,6 @@ package com.digisky.liuwei2.tinyexample.nio;
 
 import java.nio.ByteBuffer;
 import java.nio.DoubleBuffer;
-import java.nio.IntBuffer;
 
 /**
  * @author liuwei2

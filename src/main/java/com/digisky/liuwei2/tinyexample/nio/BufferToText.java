@@ -1,14 +1,10 @@
 package com.digisky.liuwei2.tinyexample.nio;
 
-import com.google.common.base.Utf8;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**

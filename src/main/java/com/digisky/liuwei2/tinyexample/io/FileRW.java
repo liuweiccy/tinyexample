@@ -1,7 +1,6 @@
 package com.digisky.liuwei2.tinyexample.io;
 
 import java.io.*;
-import java.util.Arrays;
 
 /**
  * @author liuwei2

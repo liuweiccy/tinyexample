@@ -1,6 +1,9 @@
 package com.digisky.liuwei2.tinyexample.io;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
 
 /**
  * @author liuwei2

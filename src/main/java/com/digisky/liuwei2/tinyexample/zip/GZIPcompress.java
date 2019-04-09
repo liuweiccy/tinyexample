@@ -1,7 +1,6 @@
 package com.digisky.liuwei2.tinyexample.zip;
 
 import java.io.*;
-import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 /**

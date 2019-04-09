@@ -1,11 +1,11 @@
 package com.digisky.liuwei2.tinyexample.zookeeper.curator;
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 使用Curator来创建一个ZooKeeper客户端

@@ -1,7 +1,6 @@
 package com.digisky.liuwei2.tinyexample.netty.initchannel;
 
 import com.digisky.liuwei2.tinyexample.proxy.proxytest.Person;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;

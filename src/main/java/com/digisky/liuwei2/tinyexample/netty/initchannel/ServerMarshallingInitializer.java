@@ -3,7 +3,6 @@ package com.digisky.liuwei2.tinyexample.netty.initchannel;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
-import io.netty.handler.codec.FixedLengthFrameDecoder;
 import io.netty.handler.codec.marshalling.*;
 import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.slf4j.Slf4j;

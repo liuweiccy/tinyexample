@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import static com.digisky.liuwei2.tinyexample.util.Util.*;
+import static com.digisky.liuwei2.tinyexample.util.Util.print;
 
 /**
  * @author liuwei2
