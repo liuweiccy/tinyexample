@@ -3,7 +3,6 @@ package com.digisky.liuwei2.tinyexample.io;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.StringReader;
 
 /**
  * @author liuwei2

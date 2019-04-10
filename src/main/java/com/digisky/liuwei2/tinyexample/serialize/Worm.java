@@ -3,7 +3,7 @@ package com.digisky.liuwei2.tinyexample.serialize;
 import java.io.*;
 import java.util.Random;
 
-import static com.digisky.liuwei2.tinyexample.util.Util.*;
+import static com.digisky.liuwei2.tinyexample.util.Util.print;
 
 /**
  * @author liuwei2

@@ -1,6 +1,9 @@
 package com.digisky.liuwei2.tinyexample.io.practice18;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * @author liuwei2

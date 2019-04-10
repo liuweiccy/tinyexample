@@ -1,12 +1,12 @@
 package com.digisky.liuwei2.tinyexample.netty;
 
-    import com.digisky.liuwei2.tinyexample.netty.initchannel.ClientMarshallingInitializer;
-    import io.netty.bootstrap.Bootstrap;
-    import io.netty.channel.ChannelFuture;
-    import io.netty.channel.EventLoopGroup;
-    import io.netty.channel.nio.NioEventLoopGroup;
-    import io.netty.channel.socket.nio.NioSocketChannel;
-    import lombok.extern.slf4j.Slf4j;
+import com.digisky.liuwei2.tinyexample.netty.initchannel.ClientMarshallingInitializer;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author liuwei2

@@ -1,16 +1,14 @@
 package com.digisky.liuwei2.tinyexample.zookeeper.curator;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
+import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.cache.NodeCache;
-import org.apache.curator.framework.recipes.cache.NodeCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.curator.test.TestingServer;
 import org.apache.zookeeper.CreateMode;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.concurrent.TimeUnit;
 
 /**
  * NodeCache使用示例
@@ -18,9 +16,20 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class NodeCache1 {
+    private static TestingServer server;
+
+    static {
+        try {
+            server = new TestingServer();
+            server.start();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+
     static String path = "/zk-book/nodecache";
     static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("192.168.101.88:2183")
+            .connectString(server.getConnectString())
             .retryPolicy(new ExponentialBackoffRetry(1000, 3))
             .sessionTimeoutMs(1000)
             .build();
@@ -53,6 +62,6 @@ public class NodeCache1 {
             log.error(e.getMessage(), e);
         }
 
-
+        server.stop();
     }
 }
