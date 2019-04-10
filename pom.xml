@@ -104,7 +104,8 @@
             <scope>test</scope>
         </dependency>
         <!-- zookeeper -->
-        <dependency>            <groupId>org.apache.curator</groupId>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
             <version>${curator}</version>
             <exclusions>
