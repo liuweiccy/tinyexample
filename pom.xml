@@ -10,7 +10,7 @@
 
     <properties>
         <zookeeper>3.4.13</zookeeper>
-        <curator>4.2.0</curator>
+        <curator>4.1.0</curator>
         <spring>5.1.5.RELEASE</spring>
         <jboss-marshalling>2.0.6.Final</jboss-marshalling>
     </properties>
@@ -97,23 +97,45 @@
             <scope>test</scope>
         </dependency>
         <!-- zookeeper -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.zookeeper</groupId>-->
+<!--            <artifactId>zookeeper</artifactId>-->
+<!--            <version>${zookeeper}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
             <version>${curator}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>zookeeper</artifactId>
+                    <groupId>org.apache.zookeeper</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>${curator}</version>
         </dependency>
-
-
-
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <version>${curator}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 </project>
