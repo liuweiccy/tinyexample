@@ -22,7 +22,7 @@
 
     <properties>
         <zookeeper>3.4.13</zookeeper>
-        <curator>4.2.0</curator>
+        <curator>2.13.0</curator>
         <spring>5.1.5.RELEASE</spring>
         <jboss-marshalling>2.0.6.Final</jboss-marshalling>
     </properties>
@@ -123,21 +123,12 @@
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-test</artifactId>
-            <version>4.0.1</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>zookeeper</artifactId>
-                    <groupId>org.apache.zookeeper</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-            </exclusions>
+            <version>${curator}</version>
         </dependency>
-
-
-
-
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
     </dependencies>
 </project>
