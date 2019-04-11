@@ -1,5 +1,9 @@
 package com.digisky.liuwei2.tinyexample.thread;
 
+import com.github.houbb.junitperf.core.annotation.JunitPerfConfig;
+import com.github.houbb.junitperf.core.annotation.JunitPerfRequire;
+import com.github.houbb.junitperf.core.report.impl.ConsoleReporter;
+import com.github.houbb.junitperf.core.report.impl.HtmlReporter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -54,5 +58,12 @@ public class ThreadGroupTest {
         log.debug(String.valueOf(recurseSize));
 
         mainGroup.list();
+    }
+
+    @Test
+    @JunitPerfConfig(warmUp = 1000, duration = 5000, reporter = HtmlReporter.class, threads = 3)
+    @JunitPerfRequire(min = 80, max = 200, average = 120, timesPerSecond = 5, percentiles = {"10:100", "50:120", "99:150"})
+    public void testHello() throws InterruptedException {
+        TimeUnit.MILLISECONDS.sleep(1);
     }
 }
