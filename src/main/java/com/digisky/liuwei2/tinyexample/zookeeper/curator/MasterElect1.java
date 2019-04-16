@@ -26,11 +26,18 @@ public class MasterElect1 {
     public static void main(String[] args) throws InterruptedException {
         client.start();
 
+        new Thread(MasterElect1::masterElect, "测试线程1----").start();
+        new Thread(MasterElect1::masterElect, "测试线程2----").start();
+        new Thread(MasterElect1::masterElect, "测试线程3----").start();
+        TimeUnit.SECONDS.sleep(100);
+    }
+
+    private static void masterElect() {
         LeaderSelector selector = new LeaderSelector(client, master_path, new LeaderSelectorListener() {
             @Override
             public void takeLeadership(CuratorFramework curatorFramework) throws Exception {
-                log.info("成为Master角色");
-                TimeUnit.SECONDS.sleep(3);
+                log.info(Thread.currentThread().getName() + " :成为Master角色");
+                TimeUnit.SECONDS.sleep(1);
                 log.info("完成Master操作，释放Master权力");
             }
 
@@ -42,6 +49,5 @@ public class MasterElect1 {
 
         selector.autoRequeue();
         selector.start();
-        TimeUnit.SECONDS.sleep(100);
     }
 }
