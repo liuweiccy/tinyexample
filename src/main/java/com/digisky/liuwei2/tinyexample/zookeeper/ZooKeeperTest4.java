@@ -1,12 +1,19 @@
 package com.digisky.liuwei2.tinyexample.zookeeper;
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.zookeeper.*;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.zookeeper.AsyncCallback;
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooDefs;
+import org.apache.zookeeper.ZooKeeper;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 使用异步API创建节点

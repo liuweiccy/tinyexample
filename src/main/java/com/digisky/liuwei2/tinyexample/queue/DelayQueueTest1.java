@@ -1,12 +1,12 @@
 package com.digisky.liuwei2.tinyexample.queue;
 
-import com.digisky.liuwei2.tinyexample.util.Util;
-
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
+
+import com.digisky.liuwei2.tinyexample.util.Util;
 
 /**
  * @author liuwei2

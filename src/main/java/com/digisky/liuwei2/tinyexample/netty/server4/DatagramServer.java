@@ -1,13 +1,13 @@
 package com.digisky.liuwei2.tinyexample.netty.server4;
 
+import java.net.InetSocketAddress;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioDatagramChannel;
-
-import java.net.InetSocketAddress;
 
 import static com.digisky.liuwei2.tinyexample.util.Util.print;
 

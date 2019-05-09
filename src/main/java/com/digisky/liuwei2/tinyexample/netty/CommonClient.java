@@ -1,6 +1,7 @@
 package com.digisky.liuwei2.tinyexample.netty;
 
 import com.digisky.liuwei2.tinyexample.netty.initchannel.ClientMarshallingInitializer;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;

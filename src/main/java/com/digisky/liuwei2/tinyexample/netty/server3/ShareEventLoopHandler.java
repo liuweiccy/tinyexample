@@ -1,5 +1,7 @@
 package com.digisky.liuwei2.tinyexample.netty.server3;
 
+import java.net.InetSocketAddress;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
@@ -8,8 +10,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.CharsetUtil;
-
-import java.net.InetSocketAddress;
 
 /**
  * @author liuwei2

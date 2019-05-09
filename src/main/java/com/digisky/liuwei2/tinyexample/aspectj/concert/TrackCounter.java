@@ -1,12 +1,13 @@
 package com.digisky.liuwei2.tinyexample.aspectj.concert;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author liuwei2

@@ -1,6 +1,7 @@
 package com.digisky.liuwei2.tinyexample.zookeeper.curator;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.cache.NodeCache;
@@ -8,7 +9,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.test.TestingServer;
 import org.apache.zookeeper.CreateMode;
 
-import java.util.concurrent.TimeUnit;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * NodeCache使用示例

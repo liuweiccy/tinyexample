@@ -1,6 +1,10 @@
 package com.digisky.liuwei2.tinyexample.io;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.StringReader;
 
 /**
  * @author liuwei2

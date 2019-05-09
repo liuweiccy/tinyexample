@@ -1,7 +1,5 @@
 package com.digisky.liuwei2.tinyexample.zookeeper.curator;
 
-import java.io.File;
-
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.RetryNTimes;

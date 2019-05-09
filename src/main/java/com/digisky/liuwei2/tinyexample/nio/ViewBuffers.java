@@ -1,6 +1,12 @@
 package com.digisky.liuwei2.tinyexample.nio;
 
-import java.nio.*;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.DoubleBuffer;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.LongBuffer;
+import java.nio.ShortBuffer;
 
 /**
  * @author liuwei2

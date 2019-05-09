@@ -1,8 +1,8 @@
 package com.digisky.liuwei2.tinyexample.concurrent.condition;
 
-import com.digisky.liuwei2.tinyexample.util.Util;
-
 import java.util.concurrent.locks.ReentrantLock;
+
+import com.digisky.liuwei2.tinyexample.util.Util;
 
 /**
  * @author liuwei2

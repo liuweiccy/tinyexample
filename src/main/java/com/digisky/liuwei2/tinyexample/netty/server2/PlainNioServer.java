@@ -1,7 +1,5 @@
 package com.digisky.liuwei2.tinyexample.netty.server2;
 
-import io.netty.util.CharsetUtil;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -12,6 +10,8 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
+
+import io.netty.util.CharsetUtil;
 
 import static com.digisky.liuwei2.tinyexample.util.Util.print;
 

@@ -1,7 +1,11 @@
 package com.digisky.liuwei2.tinyexample.annotation.annotation1;
 
 import java.awt.event.ActionListener;
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @author liuwei2
