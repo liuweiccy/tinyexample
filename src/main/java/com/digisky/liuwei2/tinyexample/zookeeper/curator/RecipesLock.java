@@ -34,6 +34,7 @@ public class RecipesLock {
         final InterProcessLock lock = new MyLock(client, lock_path);
         final CountDownLatch latch = new CountDownLatch(1);
         final int[] index = {0};
+        long s = System.nanoTime();
         for (int i = 0; i < 20; i++) {
             new Thread(() -> {
                 try {
@@ -51,7 +52,8 @@ public class RecipesLock {
                 }
             }).start();
         }
-
         latch.countDown();
+
+        System.out.println(System.nanoTime() - s);
     }
 }

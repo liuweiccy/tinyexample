@@ -14,7 +14,7 @@ import org.apache.zookeeper.data.Stat;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * zookeeper的分布式锁
+ * zookeeper的分布式锁--排他锁
  * @author liuwei2
  */
 @Slf4j
