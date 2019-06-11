@@ -1,38 +1,42 @@
-package com.digisky.liuwei2.tinyexample.zookeeper.curator;
+package com.digisky.liuwei2.tinyexample.zookeeper.lock;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessLock;
-import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.junit.Before;
+import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 分布式锁示例
- * MyLock是自我实现的分布式排他锁
- * 如果在没有加锁的情况下
  * @author liuwei2
  */
 @Slf4j
-public class RecipesLock {
-    static String lock_path = "/curator_recipes_lock_path";
-    static CuratorFramework client = CuratorFrameworkFactory.builder()
-            .connectString("192.168.101.88:2183")
-            .sessionTimeoutMs(3000)
-            .connectionTimeoutMs(1000)
-            .retryPolicy(new ExponentialBackoffRetry(1000, 3))
-            .build();
+public class MyLockTest {
+    private static String lock_path = "/curator_recipes_lock_path";
+    private static CuratorFramework client;
 
-    public static void main(String[] args) {
+    @Before
+    public void init() {
+        client = CuratorFrameworkFactory.builder()
+                .connectString("192.168.101.88:2183")
+                .sessionTimeoutMs(3000)
+                .connectionTimeoutMs(1000)
+                .retryPolicy(new ExponentialBackoffRetry(1000, 3))
+                .build();
+    }
+
+    @Test
+    public void testMyLock() throws InterruptedException {
         client.start();
 
-        final InterProcessLock lock = new InterProcessMutex(client, lock_path);
+        final InterProcessLock lock = new MyLock(client, lock_path);
         final CountDownLatch latch = new CountDownLatch(1);
         final int[] index = {0};
-        long s = System.nanoTime();
         for (int i = 0; i < 20; i++) {
             new Thread(() -> {
                 try {
@@ -52,6 +56,6 @@ public class RecipesLock {
         }
         latch.countDown();
 
-        System.out.println(System.nanoTime() - s);
+        TimeUnit.SECONDS.sleep(10);
     }
 }
