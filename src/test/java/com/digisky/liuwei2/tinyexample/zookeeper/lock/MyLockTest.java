@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MyLockTest {
-    private static String lock_path = "/curator_recipes_lock_path";
+    private static String lock_path = "/R_W_lock_path";
     private static CuratorFramework client;
 
     @Before
