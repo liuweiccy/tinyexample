@@ -32,18 +32,20 @@ public class MyReadWriteLockTest {
     public void testReadWriteLock() throws InterruptedException {
         client.start();
 
-        MyReadWriteLock1 readWriteLock = new MyReadWriteLock1(client, path);
-        Data data = new Data();
+        MyReadWriteLock readWriteLock = new MyReadWriteLock(client, path);
+        Lock readLock = readWriteLock.readLock();
+        Lock writeLock = readWriteLock.writeLock();
 
+        TestData data = new TestData();
         int NUM = 30;
 
         // 读线程1
         new Thread(() -> {
             for (int i = 0; i < NUM; i++) {
                 try {
-                    readWriteLock.readLock();
+                    readLock.acquire();
                     log.info("1--读线程读取数据：{}", data.getData());
-                    readWriteLock.unReadLock();
+                    readLock.release();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -54,9 +56,9 @@ public class MyReadWriteLockTest {
         new Thread(() -> {
             for (int i = 0; i < NUM; i++) {
                 try {
-                    readWriteLock.readLock();
+                    readLock.acquire();
                     log.info("2--读线程读取数据：{}", data.getData());
-                    readWriteLock.unReadLock();
+                    readLock.release();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -67,11 +69,11 @@ public class MyReadWriteLockTest {
         new Thread(() -> {
             for (int i = 0; i < NUM; i++) {
                 try {
-                    readWriteLock.writeLock();
+                    writeLock.acquire();
                     int v = new Random().nextInt(100);
                     data.setData(v);
                     log.info("M--写线程写入数据：{}", v);
-                    readWriteLock.unWriteLock();
+                    writeLock.release();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -82,11 +84,11 @@ public class MyReadWriteLockTest {
         new Thread(() -> {
             for (int i = 0; i < NUM; i++) {
                 try {
-                    readWriteLock.writeLock();
+                    writeLock.acquire();
                     int v = new Random().nextInt(100);
                     data.setData(v);
                     log.info("N--写线程写入数据：{}", v);
-                    readWriteLock.unWriteLock();
+                    writeLock.release();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -98,16 +100,16 @@ public class MyReadWriteLockTest {
 }
 
 @Slf4j
-class Data {
+class TestData {
     private int data;
 
-    public int getData() throws InterruptedException {
+    int getData() throws InterruptedException {
         log.info("开始读取数据：{}", data);
         TimeUnit.MILLISECONDS.sleep(300);
         return data;
     }
 
-    public void setData(int data) throws InterruptedException {
+    void setData(int data) throws InterruptedException {
         log.info("开始写入数据：{}", data);
         TimeUnit.SECONDS.sleep(1);
         this.data = data;

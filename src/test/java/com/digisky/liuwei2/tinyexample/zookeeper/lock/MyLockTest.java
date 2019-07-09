@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MyLockTest {
-    private static String lock_path = "/R_W_lock_path";
+    private static String LOCK_PATH = "/R_W_lock_path";
     private static CuratorFramework client;
 
     @Before
@@ -34,7 +34,7 @@ public class MyLockTest {
     public void testMyLock() throws InterruptedException {
         client.start();
 
-        final InterProcessLock lock = new MyLock(client, lock_path);
+        final InterProcessLock lock = new MyLock(client, LOCK_PATH);
         final CountDownLatch latch = new CountDownLatch(1);
         final int[] index = {0};
         for (int i = 0; i < 20; i++) {
