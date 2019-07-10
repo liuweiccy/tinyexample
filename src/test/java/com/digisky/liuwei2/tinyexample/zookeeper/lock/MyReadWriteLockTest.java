@@ -1,6 +1,5 @@
 package com.digisky.liuwei2.tinyexample.zookeeper.lock;
 
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.curator.framework.CuratorFramework;
@@ -17,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MyReadWriteLockTest {
-    private static String path = "/R_W_lock_path";
+    private static String path = "/read_write_lock_path";
     private static CuratorFramework client;
 
     @Before
@@ -33,85 +32,119 @@ public class MyReadWriteLockTest {
         client.start();
 
         MyReadWriteLock readWriteLock = new MyReadWriteLock(client, path);
+
         Lock readLock = readWriteLock.readLock();
+        new Thread(() -> {
+            try {
+                log.info("R线程1准备获取锁");
+                readLock.acquire();
+                log.info("R线程1锁住");
+                TimeUnit.SECONDS.sleep(1);
+                readLock.release();
+                log.info("R线程1释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+        Lock readLock2 = readWriteLock.readLock();
+        new Thread(() -> {
+            try {
+                log.info("R线程2准备获取锁");
+                readLock2.acquire();
+                log.info("R线程2锁住");
+                TimeUnit.SECONDS.sleep(1);
+                readLock2.release();
+                log.info("R线程2释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+
         Lock writeLock = readWriteLock.writeLock();
-
-        TestData data = new TestData();
-        int NUM = 30;
-
-        // 读线程1
         new Thread(() -> {
-            for (int i = 0; i < NUM; i++) {
-                try {
-                    readLock.acquire();
-                    log.info("1--读线程读取数据：{}", data.getData());
-                    readLock.release();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                log.info("W线程3准备获取锁");
+                writeLock.acquire();
+                log.info("W线程3锁住");
+                TimeUnit.SECONDS.sleep(1);
+                writeLock.release();
+                log.info("W线程3释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
 
-        // 读线程2
+        Lock writeLock2 = readWriteLock.writeLock();
         new Thread(() -> {
-            for (int i = 0; i < NUM; i++) {
-                try {
-                    readLock.acquire();
-                    log.info("2--读线程读取数据：{}", data.getData());
-                    readLock.release();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                log.info("W线程4准备获取锁");
+                writeLock2.acquire();
+                log.info("W线程4锁住");
+                TimeUnit.SECONDS.sleep(1);
+                writeLock2.release();
+                log.info("W线程4释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
 
-        // 写线程M
+        Lock readLock5 = readWriteLock.readLock();
         new Thread(() -> {
-            for (int i = 0; i < NUM; i++) {
-                try {
-                    writeLock.acquire();
-                    int v = new Random().nextInt(100);
-                    data.setData(v);
-                    log.info("M--写线程写入数据：{}", v);
-                    writeLock.release();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                log.info("R线程5准备获取锁");
+                readLock5.acquire();
+                log.info("R线程5锁住");
+                TimeUnit.SECONDS.sleep(1);
+                readLock5.release();
+                log.info("R线程5释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
 
-        // 写线程N
+        Lock readLock6 = readWriteLock.readLock();
         new Thread(() -> {
-            for (int i = 0; i < NUM; i++) {
-                try {
-                    writeLock.acquire();
-                    int v = new Random().nextInt(100);
-                    data.setData(v);
-                    log.info("N--写线程写入数据：{}", v);
-                    writeLock.release();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                log.info("R线程6准备获取锁");
+                readLock6.acquire();
+                log.info("R线程6锁住");
+                TimeUnit.SECONDS.sleep(1);
+                readLock6.release();
+                log.info("R线程6释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
 
-        TimeUnit.SECONDS.sleep(10);
-    }
-}
+        Lock writeLock7 = readWriteLock.writeLock();
+        new Thread(() -> {
+            try {
+                log.info("W线程7准备获取锁");
+                writeLock7.acquire();
+                log.info("W线程7锁住");
+                TimeUnit.SECONDS.sleep(1);
+                writeLock7.release();
+                log.info("W线程7释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
-@Slf4j
-class TestData {
-    private int data;
+        Lock readLock8 = readWriteLock.readLock();
+        new Thread(() -> {
+            try {
+                log.info("R线程8准备获取锁");
+                readLock8.acquire();
+                log.info("R线程8锁住");
+                TimeUnit.SECONDS.sleep(1);
+                readLock8.release();
+                log.info("R线程8释放锁");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
-    int getData() throws InterruptedException {
-        log.info("开始读取数据：{}", data);
-        TimeUnit.MILLISECONDS.sleep(300);
-        return data;
-    }
-
-    void setData(int data) throws InterruptedException {
-        log.info("开始写入数据：{}", data);
-        TimeUnit.SECONDS.sleep(1);
-        this.data = data;
+        TimeUnit.SECONDS.sleep(100);
     }
 }
