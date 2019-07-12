@@ -24,6 +24,7 @@ public class MyReadWriteLockTest {
         client = CuratorFrameworkFactory.builder()
                 .connectString("192.168.101.88:2183")
                 .retryPolicy(new ExponentialBackoffRetry(1000, 3))
+                .sessionTimeoutMs(3000)
                 .build();
     }
 

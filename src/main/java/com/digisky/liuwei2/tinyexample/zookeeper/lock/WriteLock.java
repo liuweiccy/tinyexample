@@ -5,11 +5,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.recipes.cache.NodeCache;
-import org.apache.curator.framework.recipes.cache.NodeCacheListener;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
-import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 import org.apache.curator.utils.ZKPaths;
 import org.apache.zookeeper.CreateMode;
 
@@ -34,7 +31,7 @@ public class WriteLock implements Lock {
     /** 序列号计数器 */
     private AtomicLong counter;
 
-    public WriteLock(CuratorFramework client, String path, AtomicLong counter) {
+    WriteLock(CuratorFramework client, String path, AtomicLong counter) {
         this.client = client;
         this.path = path;
         this.counter = counter;
@@ -93,7 +90,7 @@ public class WriteLock implements Lock {
      * 获取比写节点小的节点，最大节点
      * @param node      写节点本身
      * @param nodes     读节点
-     * @return
+     * @return 若节点存在返回对应节点，节点不存在返回null
      */
     private String getSmallerThemselvesNode(String node, List<String> nodes) {
         if (!LockUtil.isWrite(node)) {

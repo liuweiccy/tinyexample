@@ -30,7 +30,7 @@ class ReadLock implements Lock {
     /** 序列号计数器 */
     private AtomicLong counter;
 
-    public ReadLock(CuratorFramework client, String path, AtomicLong counter) {
+    ReadLock(CuratorFramework client, String path, AtomicLong counter) {
         this.client = client;
         this.path = path;
         this.counter = counter;

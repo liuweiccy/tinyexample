@@ -13,7 +13,9 @@ import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ * 测试自己的排他锁
  * @author liuwei2
+ * @date 2019/7/12
  */
 @Slf4j
 public class MyLockTest {
@@ -24,8 +26,6 @@ public class MyLockTest {
     public void init() {
         client = CuratorFrameworkFactory.builder()
                 .connectString("192.168.101.88:2183")
-                .sessionTimeoutMs(3000)
-                .connectionTimeoutMs(1000)
                 .retryPolicy(new ExponentialBackoffRetry(1000, 3))
                 .build();
     }
