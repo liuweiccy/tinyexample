@@ -2,7 +2,6 @@ package com.digisky.liuwei2.tinyexample.thread;
 
 import com.github.houbb.junitperf.core.annotation.JunitPerfConfig;
 import com.github.houbb.junitperf.core.annotation.JunitPerfRequire;
-import com.github.houbb.junitperf.core.report.impl.ConsoleReporter;
 import com.github.houbb.junitperf.core.report.impl.HtmlReporter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

@@ -72,7 +72,6 @@ public class TestConfigCenter {
             student = new TopStudent("VV", 171, i);
             center1.pub(path, student.toByte());
         }
-
     }
 
     private CuratorFramework getClient() {
