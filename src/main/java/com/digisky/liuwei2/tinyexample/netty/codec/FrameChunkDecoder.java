@@ -1,11 +1,11 @@
 package com.digisky.liuwei2.tinyexample.netty.codec;
 
+import java.util.List;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.handler.codec.TooLongFrameException;
-
-import java.util.List;
 
 /**
  * @author liuwei2

@@ -1,14 +1,16 @@
 package com.digisky.liuwei2.tinyexample.netty.httpServer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.digisky.liuwei2.tinyexample.netty.initchannel.HttpPipelineInitializer;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author liuwei2

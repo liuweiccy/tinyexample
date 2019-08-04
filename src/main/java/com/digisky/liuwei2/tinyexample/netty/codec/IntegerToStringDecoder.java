@@ -1,9 +1,9 @@
 package com.digisky.liuwei2.tinyexample.netty.codec;
 
+import java.util.List;
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
-
-import java.util.List;
 
 /**
  * @author liuwei2

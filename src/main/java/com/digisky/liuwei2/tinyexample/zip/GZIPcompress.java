@@ -1,6 +1,10 @@
 package com.digisky.liuwei2.tinyexample.zip;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.zip.GZIPOutputStream;
 
 /**

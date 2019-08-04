@@ -1,6 +1,13 @@
 package com.digisky.liuwei2.tinyexample.serialize;
 
-import java.io.*;
+import java.io.Externalizable;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 
 import static com.digisky.liuwei2.tinyexample.util.Util.print;
 

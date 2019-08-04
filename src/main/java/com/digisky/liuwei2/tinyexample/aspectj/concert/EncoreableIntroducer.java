@@ -1,8 +1,9 @@
 package com.digisky.liuwei2.tinyexample.aspectj.concert;
 
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.DeclareParents;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author liuwei2

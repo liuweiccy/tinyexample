@@ -1,9 +1,9 @@
 package com.digisky.liuwei2.tinyexample.proxy.proxytest;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.Data;
 
 /**
  * @author liuwei2

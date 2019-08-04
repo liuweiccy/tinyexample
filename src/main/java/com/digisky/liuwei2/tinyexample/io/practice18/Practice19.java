@@ -1,11 +1,11 @@
 package com.digisky.liuwei2.tinyexample.io.practice18;
 
-import com.digisky.liuwei2.tinyexample.io.BinaryFile;
-import com.digisky.liuwei2.tinyexample.io.TextFile;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.digisky.liuwei2.tinyexample.io.BinaryFile;
+import com.digisky.liuwei2.tinyexample.io.TextFile;
 
 /**
  * @author liuwei2

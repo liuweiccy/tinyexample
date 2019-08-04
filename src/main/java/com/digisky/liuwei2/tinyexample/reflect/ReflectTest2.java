@@ -1,13 +1,13 @@
 package com.digisky.liuwei2.tinyexample.reflect;
 
 
-import lombok.Setter;
-import lombok.ToString;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import lombok.Setter;
+import lombok.ToString;
 
 import static com.digisky.liuwei2.tinyexample.util.Util.print;
 

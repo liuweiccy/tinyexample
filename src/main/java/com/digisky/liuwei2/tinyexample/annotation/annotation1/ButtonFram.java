@@ -1,7 +1,8 @@
 package com.digisky.liuwei2.tinyexample.annotation.annotation1;
 
-import javax.swing.*;
 import java.awt.*;
+
+import javax.swing.*;
 
 /**
  * @author liuwei2
