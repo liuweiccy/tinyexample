@@ -12,16 +12,13 @@ public class BufferedInputFile {
 
     public static String read(String filename) throws IOException {
         File file = new File(filename);
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        try {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             StringBuilder sb = new StringBuilder();
             while ((line = bufferedReader.readLine()) != null) {
                 sb.append(line).append("\n");
             }
             return sb.toString();
-        } finally {
-            bufferedReader.close();
         }
     }
 
