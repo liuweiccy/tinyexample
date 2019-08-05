@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class MyLockTest {
-    private static String LOCK_PATH = "/R_W_lock_path";
+    private static String LOCK_PATH = "/lock_path";
     private static CuratorFramework client;
 
     @Before
@@ -34,13 +34,11 @@ public class MyLockTest {
     public void testMyLock() throws InterruptedException {
         client.start();
 
-        final InterProcessLock lock = new MyLock(client, LOCK_PATH);
-        final CountDownLatch latch = new CountDownLatch(1);
         final int[] index = {0};
         for (int i = 0; i < 20; i++) {
             new Thread(() -> {
+                final InterProcessLock lock = new MyLock(client, LOCK_PATH);
                 try {
-                    latch.await();
                     lock.acquire();
                     log.info("生成的订单号：{}", ++index[0]);
                 } catch (Exception e) {
@@ -54,7 +52,6 @@ public class MyLockTest {
                 }
             }).start();
         }
-        latch.countDown();
 
         TimeUnit.SECONDS.sleep(10);
     }

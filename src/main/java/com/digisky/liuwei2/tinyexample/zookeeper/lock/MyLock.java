@@ -31,20 +31,24 @@ public class MyLock implements InterProcessLock {
     @Override
     public void acquire() throws Exception {
         try {
-            client.create().withMode(CreateMode.EPHEMERAL).forPath(path);
+            client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(path);
         } catch (Exception e) {
             if (e instanceof KeeperException.NodeExistsException) {
-                PathChildrenCache childrenCache = new PathChildrenCache(client, ZKPaths.getPathAndNode(path).getPath(), true);
-                childrenCache.getListenable().addListener((client, event) -> {
-                    if (event.getType() == PathChildrenCacheEvent.Type.CHILD_REMOVED) {
-                        acquire();
-                    }
-                });
-                childrenCache.start();
+                processListener();
             } else {
                 log.error(e.getMessage(), e);
             }
         }
+    }
+
+    private void processListener() throws Exception {
+        PathChildrenCache childrenCache = new PathChildrenCache(client, ZKPaths.getPathAndNode(path).getPath(), true);
+        childrenCache.getListenable().addListener((client, event) -> {
+            if (event.getType() == PathChildrenCacheEvent.Type.CHILD_REMOVED) {
+                acquire();
+            }
+        });
+        childrenCache.start();
     }
 
     @Override
