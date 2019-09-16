@@ -25,6 +25,7 @@
         <curator>2.13.0</curator>
         <spring>5.1.5.RELEASE</spring>
         <jboss-marshalling>2.0.6.Final</jboss-marshalling>
+        <jmh>1.21</jmh>
     </properties>
 
     <dependencies>
@@ -163,11 +164,6 @@
             <version>${curator}</version>
         </dependency>
         <dependency>
-            <artifactId>guava</artifactId>
-            <groupId>com.google.guava</groupId>
-            <version>21.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-test</artifactId>
             <version>${curator}</version>
@@ -199,6 +195,20 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>23.0</version>
+        </dependency>
+
+        <!-- java的微基准测试jmh -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
