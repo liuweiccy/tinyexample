@@ -1,9 +1,6 @@
 package com.digisky.liuwei2.tinyexample.jmh;
 
 import java.util.Arrays;
-import java.util.Collection;
-
-import org.junit.runners.Parameterized;
 
 /**
  * 多线程计数器
