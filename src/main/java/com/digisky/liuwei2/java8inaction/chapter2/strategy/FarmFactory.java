@@ -1,4 +1,4 @@
-package com.digisky.liuwei2.java8inaction.chapter2;
+package com.digisky.liuwei2.java8inaction.chapter2.strategy;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,9 +8,10 @@ import com.digisky.liuwei2.java8inaction.chapter1.apple.Apple;
 
 /**
  * 农场
+ * 参数行为化之类与匿名类
  *
  * @author liuwei2
- * @date 2019/09/24 18:05
+ * @date 2019/10/08 16:38
  */
 public class FarmFactory {
     private static List<Apple> inventory;
@@ -27,33 +28,15 @@ public class FarmFactory {
         inventory.add(new Apple("green", 190));
     }
 
-    static List<Apple> filterGreenApple(List<Apple> inventory) {
+    static List<Apple> filterApple(ApplePredicate predicate) {
         List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if ("green".equals(apple.getColor())) {
-                result.add(apple);
-            }
-        }
-        return result;
-    }
 
-    static List<Apple> filterAppleByColor(List<Apple> inventory, String color) {
-        List<Apple> result = new ArrayList<>();
         for (Apple apple : inventory) {
-            if (color.equals(apple.getColor())) {
+            if (predicate.test(apple)) {
                 result.add(apple);
             }
         }
-        return result;
-    }
 
-    static List<Apple> filterAppleByWeight(List<Apple> inventory, int weight) {
-        List<Apple> result = new ArrayList<>();
-        for (Apple apple : inventory) {
-            if (apple.getWeight() >= weight) {
-                result.add(apple);
-            }
-        }
         return result;
     }
 
@@ -64,9 +47,15 @@ public class FarmFactory {
     }
 
     public static void main(String[] args) {
-        print(filterGreenApple(inventory));
-
-        print(filterAppleByColor(inventory, "red"));
-        print(filterAppleByColor(inventory, "green"));
+        print(filterApple(new AppleWeightPredicate()));
+        System.out.println("==============================");
+        print(filterApple(new AppleColorPredicate()));
+        System.out.println("==============================");
+        print(filterApple(new ApplePredicate() {
+            @Override
+            public boolean test(Apple apple) {
+                return apple.getWeight() > 150 && "green".equalsIgnoreCase(apple.getColor());
+            }
+        }));
     }
 }
