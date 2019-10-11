@@ -67,6 +67,10 @@ public class FarmFactory {
         print(filterApple(inventory, (Apple apple) -> "green".equalsIgnoreCase(apple.getColor()) && apple.getWeight() > 150));
         System.out.println("====================抽象化=========================");
         print(filter(inventory, (Apple apple) -> "green".equalsIgnoreCase(apple.getColor()) && apple.getWeight() > 150));
+        System.out.println("====================抽象化=========================");
+        Predicate<Apple> p = apple -> "green".equalsIgnoreCase(apple.getColor());
+        Predicate<Apple> p1 = apple -> apple.getWeight() > 150;
+        print(filter(inventory, p.negate().and(p1.negate())));
 
         System.out.println("=====================重量排序========================");
         // 匿名类的方式，按照重量来进行排序
@@ -76,6 +80,8 @@ public class FarmFactory {
                 return Integer.compare(o1.getWeight(), o2.getWeight());
             }
         });
+        inventory.sort((o1, o2) -> Integer.compare(o1.getWeight(), o2.getWeight()));
+        inventory.sort(Comparator.comparingInt(Apple::getWeight).reversed().thenComparing(Apple::getColor));
         print(inventory);
 
 
