@@ -15,4 +15,16 @@ public class Dish {
     private String name;
     private int calories;
     private float price;
+    private Type type;
+
+    enum Type {
+        /** 凉菜 */
+        LianCai,
+        /** 炒菜 */
+        ChaoCai,
+        /** 烧菜 */
+        ShaoCai,
+        /** 汤菜 */
+        TangCai,
+    }
 }

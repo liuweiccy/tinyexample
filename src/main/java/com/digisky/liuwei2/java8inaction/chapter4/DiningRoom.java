@@ -16,22 +16,22 @@ import static com.digisky.liuwei2.tinyexample.util.Util.print;
 public class DiningRoom {
     private static List<Dish> menu = new ArrayList<>();
     static {
-        menu.add(new Dish("凉拌番茄", 50, 10f));
-        menu.add(new Dish("凉拌白肉", 650, 28f));
-        menu.add(new Dish("凉拌鸡片", 500, 22f));
+        menu.add(new Dish("凉拌番茄", 50, 10f, Dish.Type.LianCai));
+        menu.add(new Dish("凉拌白肉", 650, 28f, Dish.Type.LianCai));
+        menu.add(new Dish("凉拌鸡片", 500, 22f, Dish.Type.LianCai));
 
-        menu.add(new Dish("炒回锅肉", 800, 18f));
-        menu.add(new Dish("鱼香茄子", 600, 28f));
-        menu.add(new Dish("炒蔬菜", 100, 8f));
+        menu.add(new Dish("炒回锅肉", 800, 18f, Dish.Type.ChaoCai));
+        menu.add(new Dish("鱼香茄子", 600, 28f, Dish.Type.ChaoCai));
+        menu.add(new Dish("炒蔬菜", 100, 8f, Dish.Type.ChaoCai));
 
-        menu.add(new Dish("水煮鱼", 1000, 48f));
-        menu.add(new Dish("红烧肉", 1200, 36f));
-        menu.add(new Dish("炖牛肉", 1500, 98f));
+        menu.add(new Dish("水煮鱼", 1000, 48f, Dish.Type.ShaoCai));
+        menu.add(new Dish("红烧肉", 1200, 36f, Dish.Type.ShaoCai));
+        menu.add(new Dish("炖牛肉", 1500, 98f, Dish.Type.ShaoCai));
 
-        menu.add(new Dish("豆腐汤", 50, 10f));
-        menu.add(new Dish("蛋花汤", 50, 10f));
-        menu.add(new Dish("炖猪蹄", 800, 40f));
-        menu.add(new Dish("羊肉汤", 1500, 98f));
+        menu.add(new Dish("豆腐汤", 50, 10f, Dish.Type.TangCai));
+        menu.add(new Dish("蛋花汤", 50, 10f, Dish.Type.TangCai));
+        menu.add(new Dish("炖猪蹄", 800, 40f, Dish.Type.TangCai));
+        menu.add(new Dish("羊肉汤", 1500, 98f, Dish.Type.TangCai));
     }
 
     static List<String> lowerCaloriesNameJava7(int caloriesValue) {
