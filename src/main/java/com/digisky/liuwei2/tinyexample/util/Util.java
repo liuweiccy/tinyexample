@@ -1,5 +1,6 @@
 package com.digisky.liuwei2.tinyexample.util;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 /**
@@ -7,7 +8,11 @@ import java.util.regex.Pattern;
  */
 public class Util {
     public static void print(Object object) {
-        System.out.println(object);
+        if (object instanceof int[]) {
+            System.out.println(Arrays.toString((int[]) object));
+        } else {
+            System.out.println(object);
+        }
     }
 
     public static void print(Object[] array) {
