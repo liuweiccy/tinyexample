@@ -3,6 +3,7 @@ package com.digisky.liuwei2.java8inaction.chapter4;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.digisky.liuwei2.tinyexample.util.Util.print;
@@ -70,5 +71,28 @@ public class DiningRoom {
 
         print("==================Java8 Stream ================");
         print(lowerCaloriesNameJava8(500));
+
+        if (menu.stream().anyMatch(v -> v.getCalories() < 100)) {
+            print("这个菜单有低热量的食品");
+        }
+
+        if (menu.stream().allMatch(v -> v.getPrice() < 100)) {
+            print("这边的食品的价格都小于100元");
+        }
+
+        if (menu.stream().noneMatch(v -> "大白菜".equals(v.getName()))) {
+            print("没有大白菜这个菜");
+        }
+
+        Dish dish = menu.stream().filter(v -> v.getCalories() > 100).findAny().orElse(null);
+        print(dish);
+        dish = menu.stream().filter(v -> v.getCalories() > 100).findFirst().orElse(null);
+        print(dish);
+
+        Optional<Dish> dishOptional = menu.stream().filter(v -> v.getCalories() > 2000).findAny();
+        print(dishOptional.isPresent());
+
+        Optional<Dish> dishOptional2 = menu.stream().filter(v -> v.getCalories() > 1000).findAny();
+        dishOptional2.ifPresent(System.out::println);
     }
 }
