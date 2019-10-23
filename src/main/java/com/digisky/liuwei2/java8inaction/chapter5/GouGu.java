@@ -14,7 +14,7 @@ public class GouGu {
                 IntStream.rangeClosed(a, 100)
                         .mapToObj(b -> new double[]{a, b, Math.sqrt(a*a + b*b)})
                         .filter(t -> t[2] % 1 == 0)
-        ).forEach(v -> System.out.printf("(%.0f, %.0f, %.0f)\n", v[0], v[1], v[2]));
+        ).limit(10).forEach(v -> System.out.printf("(%.0f, %.0f, %.0f)\n", v[0], v[1], v[2]));
     }
 }
 

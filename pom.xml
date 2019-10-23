@@ -208,5 +208,18 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh}</version>
         </dependency>
+
+        <!-- jetty -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.4.21.v20190926</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>9.4.21.v20190926</version>
+        </dependency>
+
     </dependencies>
 </project>
