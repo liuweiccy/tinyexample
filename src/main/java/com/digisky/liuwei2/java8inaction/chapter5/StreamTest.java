@@ -5,6 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -19,6 +22,7 @@ import static com.digisky.liuwei2.tinyexample.util.Util.print;
  * @date 2019/10/17 12:02
  */
 public class StreamTest {
+
     public static void main(String[] args) {
         // 通过普通的值序列来构建流
         Stream.of("Java 8 ", "Lambda ", "In ", "Action").map(String::toUpperCase).forEach(System.out::print);
@@ -38,7 +42,17 @@ public class StreamTest {
         print(Stream.iterate(1, n -> n + 1).limit(10000).reduce(Integer::sum));
         Stream.iterate(1, n -> n << 1).limit(10).forEach(System.out::println);
 
-        // 无线流的生成
+        // 迭代
         LongStream.iterate(0, n -> n * 2 + 1).limit(10).forEach(System.out::println);
+
+        // 生成
+        Stream.generate(Math::random).limit(3).forEach(System.out::println);
+        IntStream.generate(() -> 1).limit(3).forEach(System.out::println);
+        IntStream.generate(new IntSupplier() {
+            @Override
+            public int getAsInt() {
+                return 2;
+            }
+        }).limit(3).forEach(System.out::println);
     }
 }
