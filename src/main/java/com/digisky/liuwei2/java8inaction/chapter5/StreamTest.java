@@ -32,7 +32,7 @@ public class StreamTest {
         print(Arrays.stream(new int[]{1, 2, 3, 4}).sum());
 
         // 从文件创建流
-        try (Stream<String> lines = Files.lines(Paths.get("benchmark.log"))) {
+        try (Stream<String> lines = Files.lines(Paths.get("BasicFileOutput.out"))) {
             print(lines.flatMap(v -> Arrays.stream(v.split(" "))).count());
         } catch (IOException e) {
             e.printStackTrace();
