@@ -1,8 +1,11 @@
 package com.digisky.liuwei2.java8inaction.chapter6;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalLong;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -29,5 +32,25 @@ public class TestTransactionStream {
         print("===================按城市分组==========================");
         Map<String, List<Transaction>> group = list.stream().collect(Collectors.groupingBy(Transaction::getCurrencyType));
         print(group);
+        print("===================交易的数据数量==========================");
+        // 可以使用count方法代替
+        print(list.stream().collect(Collectors.counting()));
+
+        print("===================最大交易额==========================");
+        // 可以直接使用max
+        Optional<Transaction> transactionMax = list.stream().collect(Collectors.maxBy(Comparator.comparingLong(Transaction::getAmount)));
+        print(transactionMax.get());
+        print("===================最小交易额==========================");
+        // 可以直接使用min
+        Optional<Transaction> transactionMin = list.stream().collect(Collectors.minBy(Comparator.comparingLong(Transaction::getAmount)));
+        print(transactionMin.get());
+        print("===================汇总：求和==========================");
+        print(list.stream().collect(Collectors.summingLong(Transaction::getAmount)));
+        print("===================汇总：平均==========================");
+        print(list.stream().collect(Collectors.averagingLong(Transaction::getAmount)));
+        print("===================汇总：概要==========================");
+        print(list.stream().collect(Collectors.summarizingLong(Transaction::getAmount)));
+        print("===================连接==========================");
+        print(list.stream().map(Transaction::getCity).distinct().collect(Collectors.joining(" ")));
     }
 }
