@@ -29,7 +29,7 @@ public class TestTransactionStream {
     }
 
     public static void main(String[] args) {
-        print("===================按城市分组==========================");
+        print("===================按货币类型分组==========================");
         Map<String, List<Transaction>> group = list.stream().collect(Collectors.groupingBy(Transaction::getCurrencyType));
         print(group);
         print("===================交易的数据数量==========================");
@@ -52,5 +52,31 @@ public class TestTransactionStream {
         print(list.stream().collect(Collectors.summarizingLong(Transaction::getAmount)));
         print("===================连接==========================");
         print(list.stream().map(Transaction::getCity).distinct().collect(Collectors.joining(" ")));
+        print("===================按照城市进行分组=================");
+        print(list.stream().collect(Collectors.groupingBy(Transaction::getCity)));
+        print("===================自定义分类函数的分组==================");
+        print(list.stream().collect(Collectors.groupingBy(transaction -> {
+            if (transaction.getAmount() >= 1000) {
+                return "High";
+            } else {
+                return "Low";
+            }
+        })));
+        print(list.stream().collect(Collectors.groupingBy(transaction -> {
+            if (transaction.getAmount() >= 1000) {
+                return "High";
+            } else {
+                return "Low";
+            }
+        }, Collectors.counting())));
+
+        print("===================先按照城市再按照金额高低(多级分组)=======================");
+        print(list.stream().collect(Collectors.groupingBy(Transaction::getCity, Collectors.groupingBy(transaction -> {
+            if (transaction.getAmount() >= 1000) {
+                return "High";
+            } else {
+                return "Low";
+            }
+        }, Collectors.counting()))));
     }
 }
