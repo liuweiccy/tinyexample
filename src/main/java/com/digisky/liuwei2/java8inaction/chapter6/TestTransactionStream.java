@@ -78,5 +78,14 @@ public class TestTransactionStream {
                 return "Low";
             }
         }, Collectors.counting()))));
+
+
+        print("===============================分区（分组的特殊情况）=====================================");
+        // 可以通过filter方法去实现
+        Map<Boolean, List<Transaction>> cityPart1 = list.stream().collect(Collectors.partitioningBy(v -> "Chengdu".equals(v.getCity())));
+        print(cityPart1);
+        print("===============================以成都为分区，找出交易额最大的=====================================");
+        Map<Boolean, Transaction> cityPart2= list.stream().collect(Collectors.partitioningBy(Transaction::isChengdu, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingLong(Transaction::getAmount)), Optional::get)));
+        print(cityPart2);
     }
 }

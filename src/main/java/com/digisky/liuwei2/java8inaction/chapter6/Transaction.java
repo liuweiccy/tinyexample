@@ -14,4 +14,8 @@ public class Transaction {
     private int year;
     private long amount;
     private String currencyType;
+
+    public boolean isChengdu() {
+        return "Chengdu".equals(this.city);
+    }
 }
