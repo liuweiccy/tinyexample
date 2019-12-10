@@ -2,7 +2,9 @@ package com.digisky.liuwei2.java8inaction.chapter2.strategy;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
 import com.digisky.liuwei2.java8inaction.chapter1.apple.Apple;
 
@@ -57,5 +59,15 @@ public class FarmFactory {
                 return apple.getWeight() > 150 && "green".equalsIgnoreCase(apple.getColor());
             }
         }));
+
+        filterApple((Apple apple) ->  apple.getWeight() > 150);
+
+        inventory.sort(Comparator.comparing(Apple::getWeight));
+
+        inventory.sort((a1, a2) -> Integer.compare(a1.getWeight(), a2.getWeight()) );
+
+        String ss = "ssdfasdfa";
+        Function<Integer, Integer> s= (Integer i) -> ss.indexOf(i);
+        Function<Integer, Integer> s1= ss::indexOf;
     }
 }
