@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package com.digisky.liuwei2.protobuf.proto3;
+
+option java_package = "com.digisky.liuwei2.protobuf";
+
+import "enumContent.proto";
+import "google/protobuf/any.proto";
+
+/*
+    查询请求
+*/
+message SearchRequest {
+    string query = 1;
+    int32 pageNumber = 2;       // 页码
+    int32 resultPerPage = 3;    // 每页的数据
+    Corpus corpus = 4;
+}
+
+// 消息引用外部消息
+message SearchResponse {
+    repeated Result result = 1;
+}
+
+message Result {
+    string url = 1;
+    string title = 2;
+    repeated string snippets = 3;
+}
+
+// 消息嵌套
+message SearchResponse1  {
+    message Result1 {
+        string url = 1;
+        string title = 2;
+        repeated string snippets = 3;
+    }
+    repeated Result result = 1;
+}
+
+// 消息引用嵌套消息
+message SearchResponse2 {
+    repeated SearchResponse1.Result1 result = 1;
+}
+
+// 消息的3层嵌套
+message Outer {
+    message MiddleAA {
+        message Inner {
+            int64 ival = 1;
+            bool body = 2;
+        }
+    }
+
+    message MilldeBB {
+        message Inner {
+            int64 ival = 1;
+            bool body = 2;
+        }
+    }
+}
+
+message ErrorStatus {
+    string message = 1;
+    repeated google.protobuf.Any details = 2;
+}
+
+message SampleMessage {
+    oneof test_oneof {
+        string name = 4;
+        SubMessage sub_message = 9;
+    }
+}
+
+message SubMessage {
+    int32 age = 1;
+    int32 height = 2;
+    map <string, string> grade = 3;
+}
+
+service SearchService {
+    rpc Search(SearchRequest) returns(SearchResponse);
+}

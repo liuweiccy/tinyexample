@@ -3,6 +3,8 @@ package com.digisky.liuwei2.leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import com.google.common.collect.Maps;
+
 /**
  * 连续最长单词
  * TODO 最后一个测试用例失败

@@ -85,7 +85,7 @@ static List<Apple> filterApple(ApplePredicate predicate) {
     filterApple(new ApplePredicate() {
             @Override
             public boolean test(Apple apple) {
-                return apple.getWeight() > 150 && "green".equalsIgnoreCase(apple.getColor());
+                return apple.getWeight() > 150;
             }
         })
     ```
@@ -516,7 +516,7 @@ public static Optional<Integer> getAge(Student student)
 public T orElse(T other) {
     return value != null ? value : other;
 }
-```    
+```
 orElse()方法功能比较简单，即如果包装对象值非空，返回包装对象值，否则返回入参other的值（默认值）。如第一章（简介）中提到的代码：
 ``` java
 public static String getGender(Student student)
@@ -657,9 +657,9 @@ Base64的64个字符，每个字符代表一种编码，共64种编码。
 Java8 为开发者提供了 java.util.Base64 的工具类，并提供一套静态方法获取三种Base64编解码器：
 
     1）Basic编码
-
+    
     2）URL编码
-
+    
     3）MIME编码
 
 ``` java
@@ -671,7 +671,7 @@ try {
 } catch (UnsupportedEncodingException e) {
      e.printStackTrace();
 }
-```    
+```
 
 ## 其他
 ### LongAddr
