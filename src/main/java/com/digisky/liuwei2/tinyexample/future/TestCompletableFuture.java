@@ -1,5 +1,6 @@
 package com.digisky.liuwei2.tinyexample.future;
 
+import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -11,8 +12,8 @@ import org.jetbrains.annotations.NotNull;
  * 2020/4/3 10:35
  */
 public class TestCompletableFuture {
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        supplyAsync();
+    public static void main(String[] args) throws ExecutionException, InterruptedException, IOException {
+        // supplyAsync();
 
         final CompletableFuture<Integer> future = compute();
 
@@ -36,7 +37,14 @@ public class TestCompletableFuture {
             }
         }
 
-        new Client().start();
+        new Client("线程一", future).start();
+        new Client("线程二", future).start();
+        System.out.println("waiting");
+        // future.complete(100);
+        future.completeExceptionally(new Exception("未完成异常"));
+        TimeUnit.SECONDS.sleep(1);
+        future.obtrudeException(new Exception("改变未完成的异常"));
+        System.in.read();
     }
 
     private static void supplyAsync() throws InterruptedException, ExecutionException {
