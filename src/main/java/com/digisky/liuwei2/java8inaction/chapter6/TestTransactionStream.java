@@ -28,7 +28,7 @@ public class TestTransactionStream {
         list.add(new Transaction("Beijing", 2016, 2000, "EUR"));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         print("===================按货币类型分组==========================");
         Map<String, List<Transaction>> group = list.stream().collect(Collectors.groupingBy(Transaction::getCurrencyType));
         print(group);
@@ -87,5 +87,31 @@ public class TestTransactionStream {
         print("===============================以成都为分区，找出交易额最大的=====================================");
         Map<Boolean, Transaction> cityPart2= list.stream().collect(Collectors.partitioningBy(Transaction::isChengdu, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingLong(Transaction::getAmount)), Optional::get)));
         print(cityPart2);
+
+        Integer i = 10;
+        new Thread(() -> {
+            synchronized (i) {
+                System.out.println("开始");
+                try {
+                    i.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("结束");
+            }
+        }).start();
+
+        new Thread(() -> {
+            synchronized (i) {
+                System.out.println("通知前");
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                i.notify();
+            }
+        }).start();
+
     }
 }
