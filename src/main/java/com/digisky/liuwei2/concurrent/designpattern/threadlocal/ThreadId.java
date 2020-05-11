@@ -1,4 +1,4 @@
-package com.digisky.liuwei2.concurrent.threadlocal;
+package com.digisky.liuwei2.concurrent.designpattern.threadlocal;
 
 import java.util.concurrent.atomic.AtomicLong;
 
